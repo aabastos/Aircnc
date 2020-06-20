@@ -4,9 +4,10 @@ module.exports = {
   async store(req, res) {
     const email = req.body.email;
 
-    let user = User.findOne({ email });
+    let user = await User.findOne({ email });
 
     if (!user) {
+      console.log("Usuario nao existe. Esta sendo criado agora!");
       user = await User.create({ email });
     }
 
