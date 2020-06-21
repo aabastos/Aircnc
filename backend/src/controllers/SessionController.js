@@ -7,7 +7,6 @@ module.exports = {
     let user = await User.findOne({ email });
 
     if (!user) {
-      console.log("Usuario nao existe. Esta sendo criado agora!");
       user = await User.create({ email });
     }
 
