@@ -1,22 +1,22 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from "react-native";
 
 const styles = {
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#292828"
+    backgroundColor: "#292828",
   },
   form: {
     marginTop: 30,
     paddingHorizontal: 30,
-    alignSelf: "stretch"
+    alignSelf: "stretch",
   },
   label: {
     fontWeight: "bold",
     color: "#b8b8b8",
     fontSize: 16,
-    marginBottom: 8
+    marginBottom: 8,
   },
   input: {
     borderWidth: 1,
@@ -25,7 +25,8 @@ const styles = {
     fontSize: 16,
     height: 44,
     paddingHorizontal: 10,
-    marginBottom: 30
+    marginBottom: 30,
+    color: "white",
   },
   button: {
     alignItems: "center",
@@ -37,8 +38,8 @@ const styles = {
   buttonText: {
     fontWeight: "bold",
     fontSize: 20,
-    color: "white"
-  }
-}
+    color: "white",
+  },
+};
 
 export default styles;

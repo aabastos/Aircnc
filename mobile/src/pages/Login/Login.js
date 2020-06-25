@@ -1,20 +1,43 @@
-import React, { useState } from "react";
-import { View, StatusBar, KeyboardAvoidingView, Platform, Image, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  StatusBar,
+  KeyboardAvoidingView,
+  Platform,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  AsyncStorage,
+  StyleSheet,
+} from "react-native";
 
 import api from "../../services/api";
 
 import logo from "../../assets/logo.png";
 import styles from "./styles";
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [techs, setTechs] = useState("");
 
-  async function handleButtonPress() {
-    const response = api.get("/sessions", { email: email });
-    // localStorage.setItem("user", data._id);
-  }
+  useEffect(() => {
+    AsyncStorage.getItem("user").then((user) => {
+      if (user) {
+        navigation.navigate("list");
+      }
+    });
+  });
 
+  async function handleButtonPress() {
+    const response = await api.post("/sessions", { email: email });
+    const _id = response.data._id;
+
+    await AsyncStorage.setItem("user", _id);
+    await AsyncStorage.setItem("techs", techs);
+
+    navigation.navigate("List");
+  }
 
   return (
     <KeyboardAvoidingView enabled={Platform.OS === "ios"} behavior="padding" style={styles.container}>
@@ -29,7 +52,7 @@ export default function Login() {
           keyboardType="email-address"
           autoCorrect={false}
           autoCapitalize="none"
-          onChangeText={text => setEmail(text)}
+          onChangeText={(text) => setEmail(text)}
           value={email}
         />
 
@@ -41,7 +64,7 @@ export default function Login() {
           keyboardType="default"
           autoCorrect={false}
           autoCapitalize="words"
-          onChangeText={text => setTechs(text)}
+          onChangeText={(text) => setTechs(text)}
           value={techs}
         />
 
@@ -49,6 +72,6 @@ export default function Login() {
           <Text style={styles.buttonText}>Encontrar spots</Text>
         </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView >
-  )
+    </KeyboardAvoidingView>
+  );
 }
