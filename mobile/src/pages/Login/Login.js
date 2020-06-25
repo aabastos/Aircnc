@@ -27,7 +27,7 @@ export default function Login({ navigation }) {
         navigation.navigate("list");
       }
     });
-  });
+  }, []);
 
   async function handleButtonPress() {
     const response = await api.post("/sessions", { email: email });
