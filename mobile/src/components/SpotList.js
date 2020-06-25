@@ -31,7 +31,10 @@ export default function SpotList({ tech }) {
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
           <View style={styles.item}>
-            <Image style={styles.thumbnail} source={{ uri: item.thumbnail_url }} />
+            <Image
+              style={styles.thumbnail}
+              source={{ uri: item.thumbnail_url.replace("localhost", "192.168.1.115") }}
+            />
             <Text style={styles.companyName}>{item.company}</Text>
             <Text style={styles.price}>{item.price ? `R$${item.price}/dia` : "Gratuito"}</Text>
             <TouchableOpacity style={styles.bookButton}>
