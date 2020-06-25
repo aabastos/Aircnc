@@ -1,11 +1,13 @@
 const styles = {
   container: {
-    marginTop: 50,
+    marginTop: 25,
+    marginBottom: 15,
     marginLeft: 20,
   },
   spotListText: {
     color: "white",
     fontSize: 22,
+    marginBottom: 20,
   },
   techText: {
     fontWeight: "bold",
