@@ -4,7 +4,8 @@ const styles = {
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#292828"
   },
   form: {
     marginTop: 30,
@@ -13,14 +14,14 @@ const styles = {
   },
   label: {
     fontWeight: "bold",
+    color: "#b8b8b8",
     fontSize: 16,
-    color: "#444",
     marginBottom: 8
   },
   input: {
     borderWidth: 1,
     borderRadius: 2,
-    borderColor: "#ddd",
+    borderColor: "#444",
     fontSize: 16,
     height: 44,
     paddingHorizontal: 10,
